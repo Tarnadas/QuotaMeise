@@ -6,18 +6,28 @@ import java.net.URLConnection;
 
 public class QuotaStatus {
 	
-	public QuotaStatus() {
+	private Parser p;
+	
+	public void parse() {
 		try {
 			URL meise = new URL("https://quota.wohnheim.uni-kl.de/");
 			URLConnection connection = meise.openConnection();
-			new Parser(connection);
+			this.p = new Parser(connection);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public void printToConsole() {
+		System.out.println("Qutastatus for UNKNOWN");
+		System.out.println("Download: " + p.getDownload() + '/' + p.getDownloadMax());
+		System.out.println("Upload: " + p.getDownload() + '/' + p.getUploadMax());
+	}
+	
 	public static void main(String[] args) {
-		new QuotaStatus();
+		QuotaStatus q = new QuotaStatus();
+		q.parse();
+		q.printToConsole();
 	}
 	
 }

@@ -36,13 +36,11 @@ public class Parser {
 						line = removeBlocks(line);
 						line = line.replaceAll("gib", "").replaceAll("mib", "").trim();
 						download = Float.parseFloat(line);
-						System.out.println("current download: " + download);
 						break;
 					case 2:
 						line = removeBlocks(line);
 						line = line.replaceAll("gib", "").replaceAll("mib", "").trim();
 						downloadMax = Float.parseFloat(line);
-						System.out.println("maximum download: " + downloadMax);
 					}
 					dCount++;
 					break;
@@ -50,7 +48,6 @@ public class Parser {
 					if (dCount == 1) {
 						line = getPercentage(line);
 						downloadPercentage = Float.parseFloat(line);
-						System.out.println("download percentage: " + downloadPercentage);
 					}
 					dCount++;
 					break;
@@ -63,13 +60,11 @@ public class Parser {
 						line = removeBlocks(line);
 						line = line.replaceAll("gib", "").replaceAll("mib", "").trim();
 						upload = Float.parseFloat(line);
-						System.out.println("current upload: " + upload);
 						break;
 					case 2:
 						line = removeBlocks(line);
 						line = line.replaceAll("gib", "").replaceAll("mib", "").trim();
 						uploadMax = Float.parseFloat(line);
-						System.out.println("maximum upload: " + uploadMax);
 					}
 					uCount++;
 					break;
@@ -77,7 +72,6 @@ public class Parser {
 					if (uCount == 1) {
 						line = getPercentage(line);
 						uploadPercentage = Float.parseFloat(line);
-						System.out.println("upload percentage: " + uploadPercentage);
 					}
 					uCount++;
 					break;
