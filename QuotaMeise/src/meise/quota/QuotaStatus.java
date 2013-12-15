@@ -20,8 +20,8 @@ public class QuotaStatus {
 	
 	public void printToConsole() {
 		System.out.println("Qutastatus for UNKNOWN");
-		System.out.println("Download: " + p.getDownload() + '/' + p.getDownloadMax());
-		System.out.println("Upload: " + p.getUpload() + '/' + p.getUploadMax());
+		System.out.println("Download: " + p.getDownloadRepresentation() + '/' + p.getDownloadMaxRepresentation());
+		System.out.println("Upload: " + p.getUploadRepresentation() + '/' + p.getUploadMaxRepresentation());
 	}
 	
 	public static void main(String[] args) {
