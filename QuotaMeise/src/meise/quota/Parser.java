@@ -91,7 +91,7 @@ public class Parser {
 		}
 	}
 	
-	class parsedValueLine {
+	static class parsedValueLine {
 		
 		private float value;
 		private String representation;
@@ -128,7 +128,7 @@ public class Parser {
 		}
 	}
 	
-	private int getFactor(String s) {
+	private static int getFactor(String s) {
 		int factor = 0;
 		if (s.contains("kib")) {
 			factor = 1024;
@@ -140,7 +140,7 @@ public class Parser {
 		return factor;
 	}
 	
-	private String removeBlocks(String in) {
+	private static String removeBlocks(String in) {
 		boolean isBlock = false;
 		char[] c = in.toCharArray();
 		String out = "";
@@ -159,7 +159,7 @@ public class Parser {
 		return out;
 	}
 	
-	private String getPercentage(String in) {
+	private static String getPercentage(String in) {
 		String[] s = in.split("\"");
 		return s[1].replaceAll("%", "");
 	}
