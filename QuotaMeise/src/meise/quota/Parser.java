@@ -19,7 +19,10 @@ public class Parser {
 		try {
 			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			String line = in.readLine().toLowerCase();
-			int downloadFound = 0, uploadFound = 0, dCount = 0, uCount = 0;
+			
+			int downloadFound = 0, uploadFound = 0; //1: now parsing up/download values. 2: now parsing percentage
+			int dCount = 0, uCount = 0; // #lines since downloadFound==1 (ore uploadFound==1 respective). | 1: current value. 2: max value.
+
 			while (!line.equals("</html>")) {
 				if (line.contains("download")) {
 					downloadFound++;
@@ -41,6 +44,7 @@ public class Parser {
 						line = removeBlocks(line);
 						line = line.replaceAll("gib", "").replaceAll("mib", "").trim();
 						downloadMax = Float.parseFloat(line);
+					default:
 					}
 					dCount++;
 					break;
@@ -65,6 +69,7 @@ public class Parser {
 						line = removeBlocks(line);
 						line = line.replaceAll("gib", "").replaceAll("mib", "").trim();
 						uploadMax = Float.parseFloat(line);
+					default:
 					}
 					uCount++;
 					break;
