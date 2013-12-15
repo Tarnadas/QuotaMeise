@@ -12,7 +12,8 @@ public class QuotaStatus {
 		try {
 			URL meise = new URL("https://quota.wohnheim.uni-kl.de/");
 			URLConnection connection = meise.openConnection();
-			this.p = new Parser(connection);
+			this.p = new Parser();
+			this.p.parse(connection);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

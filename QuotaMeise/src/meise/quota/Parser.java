@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URLConnection;
 
+/**
+ * A parser can parse a URLConnection and then holds values for another program to use.
+ * @author Tarnadas
+ *
+ */
 public class Parser {
 
 	private float download;
@@ -18,7 +23,12 @@ public class Parser {
 	private String uploadMaxRep;
 	private float uploadPercentage;
 	
-	public Parser(URLConnection connection) {
+	/**
+	 * Parse the answer coming from the URLconnection.
+	 * After this, the parser holds all values and simply returns them.
+	 * @param connection The connection from which to read.
+	 */
+	public void parse(URLConnection connection) {
         BufferedReader in;
 		try {
 			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -91,6 +101,11 @@ public class Parser {
 		}
 	}
 	
+	/**
+	 * Can parse a value-holding line into an exact float value and a string representation
+	 * @author sylar
+	 *
+	 */
 	static class parsedValueLine {
 		
 		private float value;
@@ -128,6 +143,11 @@ public class Parser {
 		}
 	}
 	
+	/**
+	 * Get the factor of KiB, MiB, GiB, ...
+	 * @param s must be lower-case and contain the unit
+	 * @return the factor.
+	 */
 	private static int getFactor(String s) {
 		int factor = 0;
 		if (s.contains("kib")) {
@@ -140,6 +160,11 @@ public class Parser {
 		return factor;
 	}
 	
+	/**
+	 * Remove XML/HTML blocks
+	 * @param in the String to remove the blocks from
+	 * @return in without blocks.
+	 */
 	private static String removeBlocks(String in) {
 		boolean isBlock = false;
 		char[] c = in.toCharArray();
@@ -159,6 +184,11 @@ public class Parser {
 		return out;
 	}
 	
+	/**
+	 * read the percentage from a block.
+	 * @param in the line to read from
+	 * @return the percentage ready to parse.
+	 */
 	private static String getPercentage(String in) {
 		String[] s = in.split("\"");
 		return s[1].replaceAll("%", "");
